@@ -8,5 +8,17 @@
  */
 int _putchar(char c)
 {
-return (write(1, &c, 1));
+static int n;
+static char buffer[BUFFER_SIZE];
+
+if (c == FLUSH || n >= BUFFER_SIZE)
+{
+write(1, buffer, n);
+n = 0;
+}
+if (c != FLUSH)
+{
+buffer[n++] = c;
+}
+return (1);
 }

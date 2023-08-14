@@ -6,17 +6,17 @@
  *
  * Return: non-negative number
  */
-int _puts(char *s)
+void _puts(char *str)
 {
-int len = 0;
+int n = 0;
 
-while (s[len])
+if (!str)
 {
-if (_putchar(s[len]) == -1)
+return;
+}
+while (str[i] != '\0')
 {
-return (-1);
+_putchar(str[i]);
+n++;
 }
- len++;
-}
-return (len);
 }
