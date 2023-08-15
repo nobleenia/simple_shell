@@ -11,12 +11,12 @@ int _putchar(char c)
 static int n;
 static char buffer[BUFFER_SIZE];
 
-if (c == FLUSH || n >= BUFFER_SIZE)
+if (c == BUFFER_FLUSH || n >= BUFFER_SIZE)
 {
 write(1, buffer, n);
 n = 0;
 }
-if (c != FLUSH)
+if (c != BUFFER_FLUSH)
 {
 buffer[n++] = c;
 }

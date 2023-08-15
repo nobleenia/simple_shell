@@ -14,9 +14,9 @@ if (!str)
 {
 return;
 }
-while (str[i] != '\0')
+while (str[n] != '\0')
 {
-_putchar(str[i]);
+_putchar(str[n]);
 n++;
 }
 }

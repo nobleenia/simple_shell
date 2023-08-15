@@ -16,7 +16,7 @@ return (0);
 }
 while (*s++)
 {
-lenn++;
+len++;
 }
 return (len);
 }
