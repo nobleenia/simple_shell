@@ -30,11 +30,22 @@ typedef struct liststr
 
 typedef struct passinfo
 {
-  char *arg;
+  char *get_arg;
   char **argv;
   int line_count_flag;
   char ** cmd_buffer;
   int readfd;
+  char *path;
+  unsigned int line_count;
+  int status;
+  list_t *env;
+  char *fname;
+  char **environ;
+  int env_changed;
+  list_t *history;
+  list_t *alias;
+  int err_num;
+  int argc;
 } ShellInfo;
 
 typedef struct builtin
@@ -69,7 +80,34 @@ void sigintHandler(__attribute__((unused))int sig_num);
 void *_realloc(void *original_ptr, unsigned int old_size, unsigned int new_size);
 
 /*Command Execution*/
+int is_cmd(ShellInfo *info, char *path);
+void find_exec_cmd(ShellInfo *info);
+char *find_path(ShellInfo *info, char *path_list, char *cmd);
+void fork_cmd(ShellInfo *info);
 
+/* Exit Shell*/
+int exit_shell(ShellInfo *info);
+
+/*Environment Manipulations*/
+int set_env(ShellInfo *info, char *var, char *value);
+char *get_env(ShellInfo *info, const char *name);
+int spec_unset_env(ShellInfo *info);
+int unset_env(ShellInfo *info, char *var);
+
+char *ext_substr(char *pathstr, int start, int stop);
+char *starting_char(const char *str, const char *needle);
+void print_error(ShellInfo *info, char *str);
+char **get_environ(ShellInfo *info);
+void free_info(ShellInfo *info, int all);
+void free_str_arr(char **str_arr);
+void free_list(list_t **head_ptr);
+int safe_free(void **mem_ptr);
+char **list_to_strings(list_t *head);
+size_t list_len(const list_t *head);
+int print_decimal(int input, int fd);
+void puts_error(char *str);
+int putchar_error(char c);
+int spec_atoi(char *str);
 
 int main(void);
 
