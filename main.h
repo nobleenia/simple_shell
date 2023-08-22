@@ -109,6 +109,13 @@ void puts_error(char *str);
 int putchar_error(char c);
 int spec_atoi(char *str);
 
+list_t *append_node(list_t **head, const char *str, int num);
+int del_node(list_t **head, unsigned int index);
+ssize_t get_input(ShellInfo *info);
+void check_chain(ShellInfo *info, char *buffer, size_t *position, size_t curr_pos, size_t buffer_len);
+int is_chain(ShellInfo *info, char *buffer, size_t *position);
+char *set_memory(char *mem_blk, char value, unsigned int blck_size);
+
 int main(void);
 
 #endif
