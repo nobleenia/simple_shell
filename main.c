@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * main - starting point of program
+ * @ac: argument counter
+ * @av: pointer argument vector
+ *
+ * Return: 0 for success, 1 error
+ */
 int main(int ac, char **av)
 {
 ShellInfo info[] = {INITIALIZER};

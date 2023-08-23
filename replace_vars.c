@@ -19,21 +19,18 @@ continue;
 }
 if (!str_cmp(info->argv[i], "$?"))
 {
-replace_string(&(info->argv[i]),
-str_dup(convert_number(info->status, 10, 0)));
+replace_string(&(info->argv[i]), str_dup(convert_number(info->status, 10, 0)));
 continue;
 }
 if (!str_cmp(info->argv[i], "$$"))
 {
-replace_string(&(info->argv[i]),
-str_dup(convert_number(getpid(), 10, 0)));
+replace_string(&(info->argv[i]), str_dup(convert_number(getpid(), 10, 0)));
 continue;
 }
 node = check_haystack(info->env, &info->argv[i][1], '=');
 if (node)
 {
-replace_string(&(info->argv[i]),
-str_dup(spec_strchr(node->str, '=') + 1));
+replace_string(&(info->argv[i]), str_dup(spec_strchr(node->str, '=') + 1));
 continue;
 }
 replace_string(&info->argv[i], str_dup(""));

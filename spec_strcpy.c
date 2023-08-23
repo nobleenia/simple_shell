@@ -8,7 +8,7 @@
  *
  * Return: the nex string
  */
-char *spec_strcpy(char *src, char *dest, int n)
+char *spec_strcpy(char *dest, char *src, int n)
 {
 int i, j;
 char *new = dest;
@@ -25,6 +25,7 @@ j = i;
 while (j < n)
 {
 dest[j] = '\0';
+j++;
 }
 }
 return (new);

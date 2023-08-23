@@ -17,6 +17,7 @@ return (str);
 }
 }
 while (*str++ != '\0');
+
 return (NULL);
 
 }

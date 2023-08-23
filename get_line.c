@@ -14,15 +14,16 @@ static char buffer[BUFFER_SIZE];
 static size_t start = 0;
 static size_t end = 0;
 size_t chunk_len = 0;
-ssize_t num_read;
+ssize_t num_read = 0;
+ssize_t next_line = 0;
 char *line = NULL;
 char *new_line = NULL;
-char *pos_newline = NULL;
+char *pos_newline;
 
 line = *line_ptr;
 if (line && line_len)
 {
-chunk_len = *line_len;
+next_line = *line_len;
 }
 if (start == end)
 {
@@ -37,13 +38,13 @@ return(-1);
 
 pos_newline = spec_strchr(buffer + start, '\n');
 chunk_len = pos_newline ? 1 + (unsigned int)(pos_newline - buffer) : end;
-new_line = _realloc(line, num_read, num_read ? num_read + chunk_len : chunk_len + 1);
+new_line = _realloc(line, next_line, next_line ? next_line + chunk_len : chunk_len + 1);
 if (!new_line)
 {
 return (line ? free(line), -1 : -1);
 }
 
-if (num_read)
+if (next_line)
 {
 spec_strcat(new_line, buffer + start, chunk_len - start);
 }
@@ -51,14 +52,14 @@ else
 {
 spec_strcpy(new_line, buffer + start, chunk_len - start + 1);
 }
-num_read += chunk_len - start;
+next_line += chunk_len - start;
 start = chunk_len;
 line = new_line;
 
 if (line_len)
 {
-*line_len = num_read;
+*line_len = next_line;
 }
 *line_ptr = line;
-return (num_read);
+return (next_line);
 }

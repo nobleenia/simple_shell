@@ -2,23 +2,24 @@
 
 /**
  * str_cpy - copy the contents of one string into another
- * @s: the strings to be copied
+ * @src_str: the strings to be copied
+ * @dest_src: the destination string
  *
  * Return: non-negative number
  */
-char *str_cpy(char *src_str, char *dst_str)
+char *str_cpy(char *src_str, char *dest_str)
 {
 int n = 0;
 
-if (dst_str == src_str || src_str == 0)
+if (src_str == dest_str || dest_str == 0)
 {
-return (dst_str);
+return (src_str);
 }
-while (src_str[n])
+while (dest_str[n])
 {
-dst_str[n] = src_str[n];
+src_str[n] = dest_str[n];
 n++;
 }
-dst_str[n] = 0;
-return (dst_str);
+src_str[n] = 0;
+return (src_str);
 }

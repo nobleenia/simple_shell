@@ -8,24 +8,25 @@
 int unset_env(ShellInfo *info, char *var)
 {
 list_t *node = info->env;
-size_t i = 0;
+size_t n = 0;
 char *line_ptr;
 
 if (!node || !var)
+{
 return (0);
-
+}
 while (node)
 {
 line_ptr = starting_char(node->str, var);
 if (line_ptr && *line_ptr == '=')
 {
-info->env_changed = del_node(&(info->env), i);
-i = 0;
+info->env_changed = del_node(&(info->env), n);
+n = 0;
 node = info->env;
 continue;
 }
 node = node->next;
-i++;
+n++;
 }
 return (info->env_changed);
 }

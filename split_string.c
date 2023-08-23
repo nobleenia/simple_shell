@@ -12,7 +12,7 @@ char **split_string(char *str, char *delimiter)
 int i, j, k, m, num_words = 0;
 char **word_arr;
 
-if (str == NULL || str[0] == '\0')
+if (str == NULL || str[0] == 0)
 {
 return (NULL);
 }
@@ -35,7 +35,7 @@ if (num_words == 0)
 return (NULL);
 }
 
-word_arr = (char **)malloc((1 + num_words) * sizeof(char *));
+word_arr = malloc((1 + num_words) * sizeof(char *));
 if (!word_arr)
 {
 return (NULL);
@@ -53,7 +53,7 @@ while (!check_delimiter(str[i + k], delimiter) && str[i + k])
 k++;
 }
 
-word_arr[j] = (char *)malloc((k + 1) * sizeof(char));
+word_arr[j] = malloc((k + 1) * sizeof(char));
 if (!word_arr[j])
 {
 for (k = 0; k < j; k++)
@@ -68,7 +68,7 @@ for (m = 0; m < k; m++)
 {
 word_arr[j][m] = str[i++];
 }
-word_arr[j][m] = '\0';
+word_arr[j][m] = 0;
 }
 
 word_arr[j] = NULL;

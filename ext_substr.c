@@ -12,15 +12,15 @@ char *ext_substr(char *pathstr, int start, int stop)
 {
 static char buffer[BUFFER_SIZE];
 int index = 0;
-int i;
+int j = 0;
 
-for (i = start; i < stop; i++)
+for (j = 0; index = start, index < stop; index++)
 {
-if (pathstr[i] != ':')
+if (pathstr[index] != ':')
 {
-buffer[index++] = pathstr[i];
+buffer[j++] = pathstr[index];
 }
 }
-buffer[index] ='\0';
+buffer[j] = 0;
 return (buffer);
 }

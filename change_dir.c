@@ -34,8 +34,7 @@ _puts(curr_path);
 _putchar('\n');
 return (1);
 }
-_puts(get_env(info, "OLDPWD="));
-_putchar('\n');
+ _puts(get_env(info, "OLDPWD=")), _putchar('\n');
 chdir_result = chdir((target_dir = get_env(info, "OLDPWD=")) ? target_dir : "/");
 }
 else
@@ -51,7 +50,7 @@ putchar_error('\n');
 else
 {
 set_env(info, "OLDPWD", get_env(info, "PWD="));
-set_env(info, "PWD", getcwd(buffer, 1024));
+set_env(info, "PWD", getcwd(buffer, BUFFER_SIZE));
 }
 return (0);
 }

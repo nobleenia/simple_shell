@@ -6,11 +6,11 @@
   */ 
 char *set_memory(char *mem_blk, char value, unsigned int blck_size)
 {
-unsigned int i;
+unsigned int n;
 
-for (i = 0; i < blck_size; i++)
+for (n = 0; n < blck_size; n++)
 {
-mem_blk[i] = value;
+mem_blk[n] = value;
 }
 return (mem_blk);
 }

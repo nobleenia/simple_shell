@@ -16,7 +16,9 @@ while (node)
 {
 line_ptr = starting_char(node->str, name);
 if (line_ptr && *line_ptr)
+{
 return (line_ptr);
+}
 node = node->next;
 }
 return (NULL);

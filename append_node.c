@@ -17,7 +17,9 @@ return (NULL);
 node = *head;
 new_node = malloc(sizeof(list_t));
 if (!new_node)
+{
 return (NULL);
+}
 set_memory((void *)new_node, 0, sizeof(list_t));
 new_node->num = num;
 if (str)
@@ -32,10 +34,14 @@ return (NULL);
 if (node)
 {
 while (node->next)
+{
 node = node->next;
+}
 node->next = new_node;
 }
 else
+{
 *head = new_node;
+}
 return (new_node);
 }

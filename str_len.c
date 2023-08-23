@@ -6,15 +6,15 @@
  *
  * Return: non-negative number
  */
-int str_len(char *s)
+int str_len(char *str)
 {
 int len = 0;
 
-if (!s)
+if (!str)
 {
 return (0);
 }
-while (*s++)
+while (*str++)
 {
 len++;
 }

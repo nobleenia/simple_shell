@@ -46,7 +46,7 @@ if (!path_list[index])
 {
 break;
 }
-start_pos = index + 1;
+start_pos = index;
 }
 index++;
 }

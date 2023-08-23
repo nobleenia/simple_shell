@@ -22,7 +22,9 @@ return (0);
 free(info->argv[0]);
 ptr = spec_strchr(node->str, '=');
 if (!ptr)
+{
 return (0);
+}
 ptr = str_dup(ptr + 1);
 if (!ptr)
 {

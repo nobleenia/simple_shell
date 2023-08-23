@@ -25,10 +25,10 @@ if (result > INT_MAX)
 {
 return (-1);
 }
+}
 else
 {
 return (-1);
-}
 }
 }
 return (result);

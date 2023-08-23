@@ -6,7 +6,7 @@
  */
 int set_alias(ShellInfo *info, char *alias_str)
 {
-char *equal_sign_pos, *alias_name;
+char *equal_sign_pos;
 
 equal_sign_pos = spec_strchr(alias_str, '=');
 if (!equal_sign_pos)
@@ -14,10 +14,7 @@ if (!equal_sign_pos)
 return (1);
 }
 
-alias_name = equal_sign_pos;
-*equal_sign_pos = '\0';
-
-if (!*++alias_name)
+if (!*++equal_sign_pos)
 {
 return (unset_alias(info, alias_str));
 }

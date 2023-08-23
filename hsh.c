@@ -7,7 +7,7 @@
  *
  * Return: value from the last executed built-in command or exit status
  */
-int hsh(ShellInfo *info, char **argv)
+int hsh(ShellInfo *info, char **av)
 {
 ssize_t num_read = 0;
 int builtin_ret = 0;
@@ -23,7 +23,7 @@ putchar_error(BUFFER_FLUSH);
 num_read = get_input(info);
 if (num_read != -1)
 {
-set_info(info, argv);
+set_info(info, av);
 builtin_ret = find_builtin_cmd(info);
 if (builtin_ret == -1)
 {

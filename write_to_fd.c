@@ -18,6 +18,8 @@ write(fd, buffer, buffer_index);
 buffer_index = 0;
 }
 if (c != BUFFER_FLUSH)
+{
 buffer[buffer_index++] = c;
+}
 return (1);
 }

@@ -31,6 +31,8 @@ if ((*buffer)[num_read - 1] == '\n')
 num_read--;
 }
 info->line_count_flag = 1;
+handle_comments(*buffer);
+build_history_list(info, *buffer, info->history_count++);
 /*if (spec_strchr(*buffer, ';'))*/
 {
 *buffer_size = num_read;

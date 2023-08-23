@@ -35,7 +35,7 @@ fork_cmd(info);
 else
 {
 if ((interactive_mode(info) || get_env(info, "PATH=")
-|| info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
+     || info->argv[0][0] == '/') && is_cmd(info, info->argv[0]))
 {
 fork_cmd(info);
 }
