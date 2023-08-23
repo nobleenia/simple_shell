@@ -14,7 +14,7 @@ static char buffer[BUFFER_SIZE];
 
 if (c == BUFFER_FLUSH || buffer_index >= BUFFER_SIZE)
 {
-write(fd, buffer, i);
+write(fd, buffer, buffer_index);
 buffer_index = 0;
 }
 if (c != BUFFER_FLUSH)

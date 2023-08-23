@@ -29,8 +29,14 @@
 #define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
 
+#define USE_GETLINE 0
+#define USE_STRTOK 0
+
+
 #define HISTORY_FILE ".simple_shell_history"
 #define HISTORY_MAX 4096
+
+extern char **environ;
 
 typedef struct liststr
 {
@@ -59,7 +65,10 @@ typedef struct passinfo
   int argc;
   int cmd_buf_type;
   int error_no;
+  int history_count;
 } ShellInfo;
+
+#define INITIALIZER {NULL, NULL, 0, NULL, 0, NULL, 0, 0, NULL, NULL, NULL, 0, NULL, NULL, 0, 0, 0, 0, 0}
 
 typedef struct builtin
 {
@@ -106,6 +115,7 @@ int spec_unset_env(ShellInfo *info);
 int unset_env(ShellInfo *info, char *var);
 int my_env(ShellInfo *info);
 int my_setenv(ShellInfo *info);
+int populate_env_list(ShellInfo *info);
 
 /*Deal with Aliases*/
 int print_alias(list_t *alias_node);
@@ -139,6 +149,9 @@ int write_history(ShellInfo *info);
 char *get_history_file(ShellInfo *info);
 int write_string_to_fd(char *str, int fd);
 int write_to_fd(char c, int fd);
+int read_history(ShellInfo *info);
+int build_history_list(ShellInfo *info, char *buffer, int line_count);
+int renumber_history(ShellInfo *info);
 
 /*Error Handling*/
 void puts_error(char *str);
@@ -167,6 +180,6 @@ int find_builtin_cmd(ShellInfo *info);
 /*Shell Loop*/
 int hsh(ShellInfo *info, char **argv);
 
-int main(void);
+int main(int ac, char **av);
 
 #endif
