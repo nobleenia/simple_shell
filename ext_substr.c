@@ -14,7 +14,7 @@ static char buffer[BUFFER_SIZE];
 int index = 0;
 int j = 0;
 
-for (j = 0; index = start, index < stop; index++)
+ for (j = 0, index = start; index < stop; index++)
 {
 if (pathstr[index] != ':')
 {

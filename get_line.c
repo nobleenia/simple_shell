@@ -11,9 +11,9 @@
 int get_line(ShellInfo *info, char **line_ptr, size_t *line_len)
 {
 static char buffer[BUFFER_SIZE];
-static size_t start = 0;
-static size_t end = 0;
-size_t chunk_len = 0;
+static size_t start;
+static size_t end;
+size_t chunk_len;
 ssize_t num_read = 0;
 ssize_t next_line = 0;
 char *line = NULL;
