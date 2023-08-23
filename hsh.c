@@ -1,56 +1,54 @@
 #include "main.h"
 
 /**
+ * hsh - shell loop and command execution
+ * @info: pointer to the ShellInfo structure
+ * @argv: pointer to the argument array
  *
- *
- *
- *
+ * Return: value from the last executed built-in command or exit status
  */
-int main(void)
+int hsh(ShellInfo *info, char **argv)
 {
-char *line = NULL;
-size_t length = 0;
-ssize_t read;
-pid_t child;
+ssize_t num_read = 0;
+int builtin_ret = 0;
 
-while (1)
+while (num_read != -1 && builtin_ret != -2)
 {
-printf("($) ");
-
-read = getline(&line, &length, stdin);
-if (read == -1)
+clear_info(info);
+if (interactive_mode(info))
 {
-printf("\n");
-break;
-	}
-if (line[read - 1] == '\n')
-{
-line[read - 1] = '\0';
+_puts("$ ");
 }
-
-child = fork();
-
-if (child == -1)
+putchar_error(BUFFER_FLUSH);
+num_read = get_input(info);
+if (num_read != -1)
 {
-perror("fork failed");
-}
-else if (child == 0)
+set_info(info, argv);
+builtin_ret = find_builtin_cmd(info);
+if (builtin_ret == -1)
 {
-char *as[2];
-as[0] = line;
-as[1] = NULL;
-
-execve(as[0], as, NULL);
-
-perror(as[0]);
-exit(EXIT_FAILURE);
-}
-else
-{
-int status;
-waitpid(child, &status, 0);
+find_exec_cmd(info);
 }
 }
-free(line);
-return 0;
+else if (interactive_mode(info))
+{
+_putchar('\n');
+}
+free_info(info, 0);
+}
+write_history(info);
+free_info(info, 1);
+if (!interactive_mode(info) && info->status)
+{
+exit(info->status);
+}
+if (builtin_ret == -2)
+{
+if (info->error_no == -1)
+{
+exit(info->status);
+}
+exit(info->error_no);
+}
+return (builtin_ret);
 }

@@ -10,7 +10,7 @@ unsigned int i;
 
 for (i = 0; i < blck_size; i++)
 {
-mem_blck[i] = value;
+mem_blk[i] = value;
 }
-return (mem_blck);
+return (mem_blk);
 }

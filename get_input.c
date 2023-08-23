@@ -16,12 +16,12 @@ if (num_read == -1)
 {
 return (-1);
 }
-if (len)
+if (buffer_len)
 {
 curr_pos = buffer_pos;
 curr_cmd = buffer + buffer_pos;
 
-check_chain(info, buffer, &jcurr_pos buffer_pos, buffer_len);
+check_chain(info, buffer, &curr_pos, buffer_pos, buffer_len);
 while (curr_pos < buffer_len)
 {
 if (is_chain(info, buffer, &curr_pos))
@@ -35,7 +35,7 @@ buffer_pos = curr_pos + 1;
 if (buffer_pos >= buffer_len)
 {
 buffer_pos = buffer_len = 0;
-info->cmd_buf_type = ;
+info->cmd_buf_type = CMD_NORM;
 }
 
 *arg_ptr = curr_cmd;

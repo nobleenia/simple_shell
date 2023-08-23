@@ -7,7 +7,7 @@
  */
 void print_error(ShellInfo *info, char *str)
 {
-puts_error(info->fname);
+puts_error(info->file_name);
 puts_error(": ");
 print_decimal(info->line_count, STDERR_FILENO);
 puts_error(": ");

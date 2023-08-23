@@ -25,7 +25,7 @@ return (1);
 node = *head;
 while (node)
 {
-if (i == index)
+if (n == index)
 {
 prev_node->next = node->next;
 free(node->str);
