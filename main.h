@@ -29,9 +29,6 @@
 #define CONVERT_LOWERCASE 1
 #define CONVERT_UNSIGNED 2
 
-#define USE_GETLINE 0
-#define USE_STRTOK 0
-
 
 #define HISTORY_FILE ".simple_shell_history"
 #define HISTORY_MAX 4096
@@ -45,7 +42,7 @@ typedef struct liststr
   struct liststr *next;
 } list_t;
 
-typedef struct passinfo
+typedef struct
 {
   char *get_arg;
   char **argv;
